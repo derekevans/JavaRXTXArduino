@@ -14,12 +14,16 @@ void loop() {
     //Serial.println(command);
     if(command == "><handshake><") {
       Serial.println("ArduinoUno");
-    } else if(command == "><variables><") {
+    } else if(command == "><get><") {
       Serial.print(var1);
       Serial.print(",");
       Serial.print(var2);
       Serial.print(",");
       Serial.println(var3);
+    } else if(command == "><set><") {
+      var1 = Serial.readStringUntil('\0');
+      var2 = Serial.parseInt();
+      var3 = Serial.parseFloat();
     } else if(command =="><read><") {
       int i=0;
       while(i<50) {
